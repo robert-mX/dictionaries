@@ -13,38 +13,27 @@
     <title>Translator</title>
 </head>
 <body>
-    <h2>Dictionaries Upload (.po)</h2>
+    <h2>Dictionaries Translator (.po)</h2>
 
-    @*javascript validation on the form onsubmit event to verify if the file type is correct, returning false otherwise.*@
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <table>
-            <tr>
-                <td>File:</td>
-                <td><input type="file" name="Files" id="Files" accept=".po" multiple /></td>
-            </tr>
-            <tr>
-                <td>Source language: </td>
-                <td>
-                    @Html.DropDownList("SourceLanguage", new List<SelectListItem>
-                    {
-                        new SelectListItem { Text = "Auto", Value = "", Selected=true },
-                        new SelectListItem { Text = "English", Value = "en" },
-                        new SelectListItem { Text = "Polish", Value = "pl" },
-                        new SelectListItem { Text = "German", Value = "de" },
-                        new SelectListItem { Text = "French", Value = "fr" }
-                    })
-                </td>
-            </tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td><input type="submit" name="submit" value="Upload & Translate" /> </td>
-            </tr>
-        </table>
-    }
+    Oto zakładane funkcjonalności:
+    <ul>
+        <li>Możliwy był upload plików .po na serwer.</li>
+        <li>Dodany plik powinien być zapisywany na dysk serwera.</li>
+        <li>Dla ułatwienia wybieramy język źródłowy pliku.</li>
+        <li>Podczas dodawania pliku ma on zostać przetłumaczony na kilka wybranych języków (dla ułatwienia polski, francuski i niemiecki)</li>
+        <li>Przetłumaczone pliki mają również zapisać się na dysku serwera.</li>
+        <li>Dodany plik ma zostać dodany do bazy danych i widoczny na liście wszystkich plików.</li>
+        <li>Możliwe ma być pobranie pliku źródłowego z serwera oraz plików przetłumaczonych.</li>
+    </ul>
 
-    
+    Obsługa jest intuicyjna:
+    <ul>
+        <li>Klikamy Create new</li>
+        <li>Podajemy nazwę tłumaczenia oraz język źródłowy (dla podanego pliku jest to English)</li>
+        <li>Wybieramy plik dostępny w załączniku.</li>
+        <li>Klikamy Create i czekamy (tłumaczenie na wszystkie języki może trochę potrwać)</li>
+        <li>Pobieramy dowolny plik klikając na ikonę słownika.</li>
+    </ul>
 </body>
 </html>
 

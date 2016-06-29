@@ -9,10 +9,8 @@
 
 namespace WebApplication1
 {
-    using Models;
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Net;
@@ -26,19 +24,18 @@ namespace WebApplication1
 
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             return new string(Enumerable.Repeat(chars, 10)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         public Dictionaries()
         {
-            // random
-            Path = RandomFilename() + ".po";
+            FileName = RandomFilename() + ".po";
 
         }
         public int Id { get; set; }
         public string DictionaryName { get; set; }
         public string SourceLanguage { get; set; }
-        public string Path { get; set; }
+        public string FileName { get; set; }
 
         public HttpPostedFileBase Files { get; set; }
 
@@ -49,12 +46,12 @@ namespace WebApplication1
                 if (Files.ContentLength > 0)
                 {
                     //var fileName = System.IO.Path.GetFileName(file.FileName);
-                    var path = System.IO.Path.Combine(HttpContext.Current.Server.MapPath("~/Content/dictionaries"), Path);
+                    var path = System.IO.Path.Combine(HttpContext.Current.Server.MapPath("~/Content/dictionaries"), FileName);
                     Files.SaveAs(path);
 
-                    //po.createDict(Path, "pl");
-                    po.createDict(Path, "fr");
-                    //po.createDict(Path, "de");
+                    po.createDict(FileName, "pl");
+                    po.createDict(FileName, "fr");
+                    po.createDict(FileName, "de");
                 }
             }
             catch (NullReferenceException)
@@ -93,13 +90,11 @@ namespace WebApplication1
                 {
                     // msgid
                     if (fileContents[i].Contains("msgid"))
-                        newFile[i] = "msgid \"" + fileContents[i].Substring(7).Trim('"') + "\"";
+                        newFile[i] = "msgid \"" + fileContents[i].Substring(7);
                     // msgstr 
                     else
                         newFile[i] = "msgstr \"" + translate(fileContents[i].Substring(8).Trim('"'), destLanguage) + "\"";
                 }
-
-                //Debug.WriteLine(newFile[i]);
             }
 
             System.IO.File.WriteAllLines(HttpContext.Current.Server.MapPath(@"~/Content/dictionaries/" + destLanguage + "-source_" + sourcefileName), newFile);

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -67,13 +66,11 @@ namespace WebApplication1.Models
                 {
                     // msgid
                     if (fileContents[i].Contains("msgid"))
-                        newFile[i] = "msgid \"" + fileContents[i].Substring(7).Trim('"') + "\"";
+                        newFile[i] = "msgid \"" + fileContents[i].Substring(7);
                     // msgstr 
                     else
                         newFile[i] = "msgstr \"" + translate(fileContents[i].Substring(8).Trim('"'), destLanguage) + "\"";
                 }
-
-                //Debug.WriteLine(newFile[i]);
             }
 
             System.IO.File.WriteAllLines(HttpContext.Current.Server.MapPath(@"~/Content/dictionaries/"+ destLanguage + "-source_" +sourcefileName), newFile);

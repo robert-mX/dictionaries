@@ -12,14 +12,15 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DictionaryName)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SourceLanguage)
+            Source language
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Path)
+            Choose dictionary to download
         </th>
+        <th>Template download</th>
         <th></th>
     </tr>
 
@@ -32,7 +33,20 @@
             @Html.DisplayFor(modelItem => item.SourceLanguage)
         </td>
         <td>
-            <a href="~/Content/dictionaries/@Html.DisplayFor(modelItem => item.Path)">DOWNLOAD</a>
+            <a href="~/Content/dictionaries/fr-source_@Html.DisplayFor(modelItem => item.FileName)">
+                <img src="http://www.flagpictures.org/downloads/print/france1-thumb.jpg" width="40" height="24"/>
+            </a>
+            
+            <a href="~/Content/dictionaries/de-source_@Html.DisplayFor(modelItem => item.FileName)">
+                <img src="http://www.flagpictures.org/downloads/print/germany2-thumb.jpg" width="40" height="24" />
+            </a>
+            
+            <a href="~/Content/dictionaries/pl-source_@Html.DisplayFor(modelItem => item.FileName)">
+                <img src="http://www.flagpictures.org/downloads/print/poland1-thumb.gif" width="40" height="24" />
+            </a>
+        </td>
+        <td>
+            <a href="~/Content/dictionaries/@Html.DisplayFor(modelItem => item.FileName)">Original template</a>
         </td>
         <td>
             @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

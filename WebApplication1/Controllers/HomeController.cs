@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -17,15 +16,6 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult Index(PO POModel)
-        {
-            POModel.upload(POModel);
-
-            return View();
-            //return RedirectToAction("Index");
         }
     }
 }
