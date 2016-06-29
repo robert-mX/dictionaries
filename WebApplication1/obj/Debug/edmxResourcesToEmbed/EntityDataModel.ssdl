@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="SourceDictList">
+    <Key>
+      <PropertyRef Name="PK_ID" />
+    </Key>
+    <Property Name="PK_ID" Type="int" Nullable="false" />
+    <Property Name="SourceDictName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TranslatedDictList">
+    <Key>
+      <PropertyRef Name="PK_ID" />
+    </Key>
+    <Property Name="PK_ID" Type="int" Nullable="false" />
+    <Property Name="TranslatedDictName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FK_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Translate__FK_ID__1273C1CD">
+    <End Role="SourceDictList" Type="Self.SourceDictList" Multiplicity="1" />
+    <End Role="TranslatedDictList" Type="Self.TranslatedDictList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SourceDictList">
+        <PropertyRef Name="PK_ID" />
+      </Principal>
+      <Dependent Role="TranslatedDictList">
+        <PropertyRef Name="FK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseModelStoreContainer">
+    <EntitySet Name="SourceDictList" EntityType="Self.SourceDictList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TranslatedDictList" EntityType="Self.TranslatedDictList" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Translate__FK_ID__1273C1CD" Association="Self.FK__Translate__FK_ID__1273C1CD">
+      <End Role="SourceDictList" EntitySet="SourceDictList" />
+      <End Role="TranslatedDictList" EntitySet="TranslatedDictList" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities1">
+    <EntitySetMapping Name="Dictionaries">
+      <EntityTypeMapping TypeName="DatabaseModel.Dictionaries">
+        <MappingFragment StoreEntitySet="Dictionaries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DictionaryName" ColumnName="DictionaryName" />
+          <ScalarProperty Name="SourceLanguage" ColumnName="SourceLanguage" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

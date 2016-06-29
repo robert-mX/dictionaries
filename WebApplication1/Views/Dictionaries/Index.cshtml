@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApplication1.Dictionaries>
+
+@{
+    ViewBag.Title = "Dictionaries";
+}
+
+<h2>Dictionaries</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DictionaryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SourceLanguage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Path)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DictionaryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SourceLanguage)
+        </td>
+        <td>
+            <a href="~/Content/dictionaries/@Html.DisplayFor(modelItem => item.Path)">DOWNLOAD</a>
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }) @*zostawia kopie pliku na serwerze*@
+        </td>
+    </tr>
+}
+
+</table>

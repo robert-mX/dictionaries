@@ -1,0 +1,50 @@
+﻿@model WebApplication1.Models.PO
+
+@{
+    //Layout = null;
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width-device-width" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <title>Translator</title>
+</head>
+<body>
+    <h2>Dictionaries Upload (.po)</h2>
+
+    @*javascript validation on the form onsubmit event to verify if the file type is correct, returning false otherwise.*@
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <table>
+            <tr>
+                <td>File:</td>
+                <td><input type="file" name="Files" id="Files" accept=".po" multiple /></td>
+            </tr>
+            <tr>
+                <td>Source language: </td>
+                <td>
+                    @Html.DropDownList("SourceLanguage", new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "Auto", Value = "", Selected=true },
+                        new SelectListItem { Text = "English", Value = "en" },
+                        new SelectListItem { Text = "Polish", Value = "pl" },
+                        new SelectListItem { Text = "German", Value = "de" },
+                        new SelectListItem { Text = "French", Value = "fr" }
+                    })
+                </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" name="submit" value="Upload & Translate" /> </td>
+            </tr>
+        </table>
+    }
+
+    
+</body>
+</html>
+

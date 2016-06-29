@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+    <EntitySetMapping Name="SourceDictList">
+      <EntityTypeMapping TypeName="DatabaseModel.SourceDictList">
+        <MappingFragment StoreEntitySet="SourceDictList">
+          <ScalarProperty Name="PK_ID" ColumnName="PK_ID" />
+          <ScalarProperty Name="SourceDictName" ColumnName="SourceDictName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TranslatedDictList">
+      <EntityTypeMapping TypeName="DatabaseModel.TranslatedDictList">
+        <MappingFragment StoreEntitySet="TranslatedDictList">
+          <ScalarProperty Name="PK_ID" ColumnName="PK_ID" />
+          <ScalarProperty Name="TranslatedDictName" ColumnName="TranslatedDictName" />
+          <ScalarProperty Name="FK_ID" ColumnName="FK_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
